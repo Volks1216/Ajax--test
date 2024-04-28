@@ -6,29 +6,25 @@ $(function(){
 
     $.ajax({
         type: "GET",
-        url: "https://learnwebcode.github.io/json-example/animals-1.json",
-        success: function(obj) {
-            $.each(obj, function(i, obj1) {
-                $obj.append("<br>", " name: " +obj1.name+ ", species: "+obj1.species);
-            });
-        }
-    });
-});
+        url: "animals.JSON",
+        
+    }).done(function(data){
+        console.log(data)
+        $.map(data, function(post, i) {
+            $("#append").append("<br>", "name: " + post.name + ", species: "+post.species);
+        })
+    })
 
-$("#btn").click(function() {
+    $("#postform").submit(function(e) {
+        e.preventDefault();
+        var name = $("#name").val();
+        var species = $("#species").val();
+        var url = $(this).attr("action");
 
-    var obj = {
-        name: $name.val(),
-        species: $species.val(),
-    };
-
-    $.ajax ({
-        type: "POST",
-        url: "https://learnwebcode.github.io/json-example/animals-1.json",
-        data: obj,
-        dataType: "text",
-        success: function(newObj) {
-            $obj.append("<br>", " name: " +newObj.name+ ", species: "+newObj.species);
-        }
+        $.post(url, {name, species}).
+        done(function(data) {
+            $("#append").append("<br>", "name: " + name + ", species: "+species);
+            console.log(data);
+        })
     })
 });

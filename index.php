@@ -6,14 +6,18 @@
     <title>Document</title>
 </head>
 <body>
+    <?php
+    include("get.php");
+    include("add.php");
+    ?>
     <div id="append"></div>
-    <form id="postform" action="https://my-json-server.typicode.com/typicode/demo/posts">
+    <form action="index.php" method="POST">
         <P>ADD NEW PETS</P>
         name
-        <input type="text", id="name"><br>
+        <input type="text", id="name", name="name"><br>
         species
-        <input type="text", id="species"><br>
-        <input type="submit" id="submt">
+        <input type="text", id="species" name="species"><br>
+        <input type="submit" id="submt", name="submit">
     </form>
 
 </body>

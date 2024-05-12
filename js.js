@@ -1,4 +1,4 @@
-$(document).ready(function (){
+$("document").ready(function (){
 
         $.get("get.php", function(data) {
             console.log(data);
@@ -9,4 +9,4 @@ $(document).ready(function (){
                 $.post("add.php", {name:name, species:species})
 
             })
-});
+})
